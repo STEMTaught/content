@@ -19,18 +19,37 @@ class Image extends React.Component{
 class Editor extends React.Component{
     constructor(props){
         super(props)
-        this.handleChange = this.handleChange.bind(this)
+        this.updateUrl = this.updateUrl.bind(this)
+        this.updateDescription = this.updateDescription.bind(this)
     }
 
-    handleChange(event){
-        const {index} = this.props
-        const {value} = event.target
-        this.props.updateBlock({text:value}, index)
+    updateUrl(event){
+        let {index, data} = this.props
+        data.url = event.target.value
+        this.props.updateBlock(data, index)
+    }
+
+    updateDescription(event){
+        let {index, data} = this.props
+        data.description = event.target.value
+        this.props.updateBlock(data, index)
     }
     
     render(){
         const {url, description} = this.props.data
-        return <div className='Image'></div>
+        const image = url
+            ? <img src={url} alt={description || ''}/>
+            : ''
+
+        return (
+            <div className='Image'>
+                {image}
+                <div>
+                    <input type='text' placeholder='Description' onChange={this.updateDescription} value={description}/>    
+                    <input className='url' type='url' placeholder='Photo URL' onChange={this.updateUrl} value={url}/>
+                </div>
+            </div>
+        )
     }
 }
 
@@ -44,7 +63,22 @@ class Editor extends React.Component{
 
 class Content extends React.Component{
     render(){
-        return <div className='Image'></div>
+        const {url, description} = this.props.data
+
+        const image = url
+            ? <img src={url} alt={description || ''}/>
+            : ''
+
+        const desc = description
+            ? <h5>{description}</h5>
+            : ''
+
+        return (
+            <div className='Image'>
+                {image}
+                {desc}
+            </div>
+        )
     }
 }
 

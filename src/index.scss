@@ -132,6 +132,7 @@ body{
 .Page > .BlockSet{
     height:90vh;
     margin: 5vh auto; 
+    padding-bottom: 20px;
 }
 
 .Page > .BlockSet:first-of-type{
@@ -145,8 +146,12 @@ body{
 
 .BlockSet{
     @extend %scrollBar;
+    //padding: 10px 10px 0 10px;
+    background-color: white;
+}
+
+.BlockSet:first-of-type{
     background-color: #eee;
-    padding: 10px 10px 0 10px;
 }
 
 
@@ -155,11 +160,14 @@ body{
     display: flex;
     flex-flow: row nowrap;
     margin: 0 0 2px 0;
+    padding: 15px;
     background-color: white;
+    position: relative;
 }
 
 .Block.edit{
     background-color: transparent;
+    padding:0;
 }
 
 .Block>div:first-of-type{
@@ -167,20 +175,27 @@ body{
     min-height: 110px;
 }
 
+.Block.edit > div:first-of-type{
+    border:1px solid #ccc;
+}
+
 
 .Text{
     width:100%;
     min-height:50px;
     padding:5px 15px;
-
+    border: none !important;
+    
     p{
         text-align: left;
-        word-break: break-all;
+        overflow-wrap: break-word;
     }
 }
 
+
 .edit > .Text{
     padding:0;
+
 }
 
 
@@ -205,4 +220,73 @@ body{
         padding:5px;
         line-height: 24px;
     }
+}
+
+
+
+
+
+
+
+
+
+.Image{
+    background-color: white;
+
+    img{
+        max-width: 100%;
+        width: 100%;
+        height:auto;
+        outline:none;
+        border:none;
+        background-color: rgba(0, 0, 0, .5);
+        margin:0;
+    }
+    div{
+        width: 100%;
+        display: flex;
+        flex-flow: column nowrap;
+        padding:5px 15px 15px 15px;
+
+        .url{
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        *{
+            margin: 10px 0 0 0;
+            border:none;
+            outline:none;
+            background-color: transparent;
+        }
+    }
+    h5{
+        margin:5px;
+        font-weight: 500;
+        font-style: italic;
+        text-align: left;
+        font-size: .83em;
+    }
+}
+
+
+
+
+.Block:first-of-type:not(.edit){
+    width: 600px;
+    padding: 0;
+    
+    .Image{
+        padding:0;
+        margin:0;
+        
+        h5{
+            padding:0 15px;
+        }
+    }
+}
+
+.Block:first-of-type:not(.edit) > div{
+    margin: 15px;
 }
