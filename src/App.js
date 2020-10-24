@@ -1,7 +1,7 @@
 import React from 'react';
-import Content from './components/Content/Content'
-import Editor from './components/Editor/Editor'
-
+//import Content from './oldComponents/Content/Content'
+//import Editor from './components/Editor/Editor'
+import Page from './components/Page'
 
 class App extends React.Component {
   constructor(props) {
@@ -32,14 +32,11 @@ class App extends React.Component {
     this.setState({blocks:newBlocks})
   }
   
+  //<Editor updateBlocks={this.updateBlocks}/>
+  //<Content blocks={this.state.blocks}/>
 
   render() {
-      return(
-        <div>
-          <Editor updateBlocks={this.updateBlocks}/>
-          <Content blocks={this.state.blocks}/>
-        </div>
-      )
+      return <Page/>
   }
 }
 
