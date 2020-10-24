@@ -15,6 +15,7 @@ class BlockSet extends React.Component{
         this.removeBlock = this.removeBlock.bind(this)
         this.swapBlocks = this.swapBlocks.bind(this)
         this.moveBlock = this.moveBlock.bind(this)
+        this.addBlock = this.addBlock.bind(this)
     }
 
     
@@ -53,6 +54,12 @@ class BlockSet extends React.Component{
         }
 
     }
+
+    addBlock(data) {
+        let blocks = this.props.blocks
+        blocks.push(data)
+        this.updateBlocks(blocks)
+    }
     
     
     
@@ -87,9 +94,12 @@ class BlockSet extends React.Component{
             }
         )
 
+        const addBlock = edit ? <AddBlock addBlock={this.addBlock}/> : ''
+
         return(
             <div className='BlockSet'>
                 {blocksToRender}
+                {addBlock}
             </div>
         )
     }

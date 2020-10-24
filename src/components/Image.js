@@ -30,7 +30,7 @@ class Editor extends React.Component{
     
     render(){
         const {url, description} = this.props.data
-        return <input type='text' onChange={this.handleChange} value={''}/>
+        return <div className='Image'></div>
     }
 }
 
@@ -44,7 +44,7 @@ class Editor extends React.Component{
 
 class Content extends React.Component{
     render(){
-        return <p>{'image'}</p>
+        return <div className='Image'></div>
     }
 }
 

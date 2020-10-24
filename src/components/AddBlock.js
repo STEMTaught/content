@@ -1,4 +1,5 @@
 import React from 'react'
+import IconButton from './IconButton'
 
 class AddBlock extends React.Component{
     constructor(props){
@@ -19,10 +20,11 @@ class AddBlock extends React.Component{
         
         // add a new block of the specified type
         if (Object.keys(defaultBlocks).includes(type)){
-           let block = defaultBlocks[type]
-           block.type = type
-           console.log('adding block:', block)
-           this.props.addBlock(block)
+            let block = {
+                type: type,
+                data: defaultBlocks[type]
+            }
+            this.props.addBlock(block)
         }
     }
 
@@ -48,7 +50,7 @@ class AddBlock extends React.Component{
                     <option value="default" disabled="disabled">Choose a block type</option>
                     {options}
                 </select>
-                <i className="material-icons" onClick={this.handleClick}>add</i>
+                <IconButton icon='add' handleClick={this.handleClick}/>
             </div>
         )
     }
