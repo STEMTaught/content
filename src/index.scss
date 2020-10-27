@@ -290,3 +290,26 @@ body{
 .Block:first-of-type:not(.edit) > div{
     margin: 15px;
 }
+
+
+
+.QuestionEditor{
+    padding:15px;
+
+    .Question{
+        font-weight: bold;
+        text-align: center;
+        margin:20px 0;
+        padding: 0 20px;
+    }
+}
+
+.Answer{
+    display: flex;
+    flex-flow: row nowrap;
+    padding:5px;
+
+    .IconButton{
+        border:none;
+    }
+}

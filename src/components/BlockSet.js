@@ -4,6 +4,7 @@ import BlockControls from './BlockControls'
 import Image from './Image'
 import AddBlock from './AddBlock'
 import Text from './Text'
+import Question from './Question'
 
 class BlockSet extends React.Component{
     constructor(props){
@@ -23,7 +24,8 @@ class BlockSet extends React.Component{
 
     updateBlock(data, index){
         let blocks = this.props.blocks
-        blocks[index].data = data
+
+        blocks[index].data = {...blocks[index].data, ...data}
         this.updateBlocks(blocks)
     }
     
@@ -74,6 +76,7 @@ class BlockSet extends React.Component{
                 const elements = {
                     'text': <Text edit={edit} data={data} index={index} updateBlock={this.updateBlock}/>,
                     'image': <Image edit={edit} data={data} index={index} updateBlock={this.updateBlock}/>,
+                    'question': <Question edit={edit} data={data} index={index} updateBlock={this.updateBlock}/>
                 }
 
                 const controls = edit

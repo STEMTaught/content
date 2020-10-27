@@ -360,11 +360,18 @@ h5{
         margin:20px 0;
         padding: 0 20px;
     }
+}
 
-    textarea{
-        //border-bottom: 1px solid #ccc;
+.Answer{
+    display: flex;
+    flex-flow: row nowrap;
+    padding:5px;
+
+    .IconButton{
+        border:none;
     }
 }
+
 
 .IconButton{
     background-color: rgba(0, 0, 0, .1);
@@ -404,13 +411,3 @@ h5{
     overflow: auto;
 }
 
-
-.Answer{
-    display: flex;
-    flex-flow: row nowrap;
-    padding:5px;
-
-    .IconButton{
-        border:none;
-    }
-}

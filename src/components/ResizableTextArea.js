@@ -6,7 +6,6 @@ class ResizableTextarea extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			value: '',
 			rows: 1,
 			lineHeight: 23
 		};
@@ -45,7 +44,7 @@ class ResizableTextarea extends React.Component {
 		return (
 			<textarea
 				rows={this.state.rows}
-				value={this.props.value || this.state.value}
+				value={this.props.value}
 				placeholder={this.props.placeholder || 'Enter your text here...'}
 				className={'ResizableTextArea ' + (this.props.className || '')}
 				onChange={this.handleChange}
