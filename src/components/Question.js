@@ -120,6 +120,9 @@ class Content extends React.Component{
 
         const answersToRender = answers.map(
             answer => {
+
+                if (answer === '') return ''
+
                 return (
                     <div className='Answer'>
                         <IconButton icon='radio_button_unchecked'/>
