@@ -23,6 +23,7 @@ class Editor extends React.Component{
         this.updateQuestion = this.updateQuestion.bind(this)
         this.updateAnswer = this.updateAnswer.bind(this)
         this.addAnswer = this.addAnswer.bind(this)
+        this.markCorrect = this.markCorrect.bind(this)
     }
 
     updateQuestion(event){
@@ -49,7 +50,10 @@ class Editor extends React.Component{
         this.props.updateBlock({answers:answers}, index)
     }
 
-    
+    markCorrect(answerIndex){
+        const {index} = this.props
+        this.props.updateBlock({correctIndex:answerIndex}, index)
+    }
     
     
     render(){
@@ -57,7 +61,7 @@ class Editor extends React.Component{
         
         const answersToRender = answers.map(
             (answer, answerIndex) => {
-                return <Answer answer={answer} updateAnswer={this.updateAnswer} addAnswer={this.addAnswer} answerIndex={answerIndex}/>
+                return <Answer answer={answer} updateAnswer={this.updateAnswer} addAnswer={this.addAnswer} markCorrect={this.markCorrect} correctIndex={correctIndex} answerIndex={answerIndex}/>
             }
         )
         
@@ -84,19 +88,20 @@ class Answer extends React.Component{
             this.props.addAnswer(event, this.props.answerIndex)
         }
         else if (key === 'Backspace') {
-            event.preventDefault()
             if (event.target.value === '') {
+                event.preventDefault()
                 this.props.updateAnswer(event, this.props.answerIndex)
             }
         }
     }
 
     render(){
-        const {answer, updateAnswer, answerIndex} = this.props
+        const {answer, updateAnswer, answerIndex, correctIndex, markCorrect} = this.props
+        const icon = correctIndex === answerIndex ? 'radio_button_checked' : 'radio_button_unchecked'
 
         return (
             <div className='Answer'>
-                <IconButton icon='radio_button_unchecked'/>
+                <IconButton icon={icon} handleClick={() => markCorrect(answerIndex)}/>
                 <ResizableTextarea placeholder='Answer' onChange={event => updateAnswer(event,answerIndex)} value={answer} onKeyDown={this.handleKeyDown}/>
             </div>
             
@@ -111,7 +116,26 @@ class Answer extends React.Component{
 
 class Content extends React.Component{
     render(){
-        return <p>{this.props.data.text}</p>
+        const {question, answers} = this.props.data
+
+        const answersToRender = answers.map(
+            answer => {
+                return (
+                    <div className='Answer'>
+                        <IconButton icon='radio_button_unchecked'/>
+                        <p>{answer}</p>
+                    </div>
+                )
+            }
+            )
+            
+            return (
+                <div className='Quiz'>
+                <h3>{question}</h3>
+                <br/>
+                {answersToRender}
+            </div>
+        )
     }
 }
 

@@ -8,11 +8,10 @@ class Page extends React.Component{
         this.state = {
             blocks: [
                 {
-                    type: 'question',
-                    data:{   
-                        question:'________ is a combination of materials that are physically mixed together.', 
-                        answers:['A Mixture','A Solute', 'A Solvent', 'An Element'], 
-                        correctIndex:0
+                    type: 'image',
+                    data:{
+                        url: 'https://images.pexels.com/photos/462162/pexels-photo-462162.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+                        description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
                     }
                 }, {
                     type: 'text',
@@ -20,10 +19,11 @@ class Page extends React.Component{
                         text: `<p style="text-align: center;"><span style="font-size: 20pt;"><strong><span style="font-family: 'Open Sans', Arial, sans-serif; text-align: justify; background-color: #ffffff;">This is a Title</span></strong></span></p><p><span style="font-family: 'Open Sans', Arial, sans-serif; font-size: 18.6667px; text-align: justify; background-color: #ffffff;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum <strong>dolore</strong> eu fugiat nulla pariatur.</span></p>`
                     }
                 }, {
-                    type: 'image',
-                    data:{
-                        url: 'https://images.pexels.com/photos/462162/pexels-photo-462162.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-                        description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
+                    type: 'question',
+                    data:{   
+                        question:'________ is a combination of materials that are physically mixed together.', 
+                        answers:['A Mixture','A Solute', 'A Solvent', 'An Element'], 
+                        correctIndex:0
                     }
                 }, {
                     type: 'text',

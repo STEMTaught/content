@@ -293,23 +293,39 @@ body{
 
 
 
-.QuestionEditor{
-    padding:15px;
-
-    .Question{
-        font-weight: bold;
-        text-align: center;
-        margin:20px 0;
-        padding: 0 20px;
+.Block:not(.edit) > .Quiz{
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    margin:45px !important;
+    h3, p{
+        margin: 0;
     }
 }
+
+
+
+.Quiz{
+    padding:35px 20px;
+    background-color: white;
+}
+.Question{
+    font-weight: bold;
+    text-align: center;
+    margin-bottom:10px;
+    padding: 10px 20px;
+}
+
 
 .Answer{
     display: flex;
     flex-flow: row nowrap;
     padding:5px;
+    //justify-content: center;
+    align-items: center;
+    align-content: center;
 
     .IconButton{
         border:none;
     }
 }
+
