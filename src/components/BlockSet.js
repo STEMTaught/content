@@ -5,6 +5,7 @@ import Image from './Image'
 import AddBlock from './AddBlock'
 import Text from './Text'
 import Question from './Question'
+import Reader from './Reader'
 
 class BlockSet extends React.Component{
     constructor(props){
@@ -76,7 +77,8 @@ class BlockSet extends React.Component{
                 const elements = {
                     'text': <Text edit={edit} data={data} index={index} updateBlock={this.updateBlock}/>,
                     'image': <Image edit={edit} data={data} index={index} updateBlock={this.updateBlock}/>,
-                    'question': <Question edit={edit} data={data} index={index} updateBlock={this.updateBlock}/>
+                    'question': <Question edit={edit} data={data} index={index} updateBlock={this.updateBlock}/>,
+                    'reader': <Reader edit={edit} data={data} index={index} updateBlock={this.updateBlock}/>,
                 }
 
                 const controls = edit

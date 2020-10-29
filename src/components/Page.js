@@ -8,6 +8,11 @@ class Page extends React.Component{
         this.state = {
             blocks: [
                 {
+                    type: 'reader',
+                    data: {
+                        content: '{"0":["Hello",0,1], "1":["World",1,2]}'
+                    }
+                }, {
                     type: 'image',
                     data:{
                         url: 'https://images.pexels.com/photos/462162/pexels-photo-462162.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',

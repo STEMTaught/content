@@ -230,6 +230,12 @@ body{
 
 
 
+.url{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .Image{
     background-color: white;
 
@@ -248,11 +254,6 @@ body{
         flex-flow: column nowrap;
         padding:5px 15px 15px 15px;
 
-        .url{
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
 
         *{
             margin: 10px 0 0 0;
@@ -285,11 +286,12 @@ body{
             padding:0 15px;
         }
     }
+
+    div{
+        margin: 15px;
+    }
 }
 
-.Block:first-of-type:not(.edit) > div{
-    margin: 15px;
-}
 
 
 
@@ -329,3 +331,15 @@ body{
     }
 }
 
+
+.Reader{
+    padding:15px;
+
+    *{
+        margin-bottom:15px;
+    }
+
+    input{
+        width:100%;
+    }
+}
