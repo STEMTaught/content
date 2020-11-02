@@ -1,8 +1,7 @@
 import React from 'react'
-import BlockSet from './BlockSet'
-import Test from './Test'
+import BlockSet from '../components/BlockSet'
 
-class Page extends React.Component {
+class Dev extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -73,14 +72,11 @@ class Page extends React.Component {
                     edit={false}
                 />
             </div>
-            /*
-            <Test/>
-           */
         )
     }
 }
 
 
-export default Page
+export default Dev
 
 
