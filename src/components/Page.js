@@ -1,20 +1,21 @@
 import React from 'react'
 import BlockSet from './BlockSet'
+import Test from './Test'
 
-
-class Page extends React.Component{
-    constructor(props){
+class Page extends React.Component {
+    constructor(props) {
         super(props)
         this.state = {
             blocks: [
                 {
                     type: 'reader',
                     data: {
-                        content: '{"0":["Hello",0,1], "1":["World",1,2]}'
+                        url: 'https://static.wixstatic.com/mp3/01b81b_3aa47ab31ef0414c864f060cd9c9daed.wav',
+                        content: `[["Title",[["The",0,0.4],["Three",0.4,0.8],["Little",0.8,1],["Birds",1,1.3]]],["Subtitle",[["Making",1.3,2.4],["Shade",2.4,2.9]]]]`
                     }
                 }, {
                     type: 'image',
-                    data:{
+                    data: {
                         url: 'https://images.pexels.com/photos/462162/pexels-photo-462162.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
                         description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
                     }
@@ -25,19 +26,19 @@ class Page extends React.Component{
                     }
                 }, {
                     type: 'question',
-                    data:{   
-                        question:'________ is a combination of materials that are physically mixed together.', 
-                        answers:['A Mixture','A Solute', 'A Solvent', 'An Element'], 
-                        correctIndex:0
+                    data: {
+                        question: '________ is a combination of materials that are physically mixed together.',
+                        answers: ['A Mixture', 'A Solute', 'A Solvent', 'An Element'],
+                        correctIndex: 0
                     }
                 }, {
                     type: 'text',
-                    data:{
+                    data: {
                         text: `<p><span style="font-family: 'Open Sans', Arial, sans-serif; font-size: 14pt; text-align: justify; background-color: #ffffff;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</span></p>`
                     }
                 }, {
                     type: 'image',
-                    data:{
+                    data: {
                         url: 'https://images.pexels.com/photos/847393/pexels-photo-847393.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
                         description: 'Duis aute irure dolor in reprehenderit.'
                     }
@@ -53,25 +54,28 @@ class Page extends React.Component{
     }
 
 
-    updateData(newData){
+    updateData(newData) {
         this.setState(newData)
     }
 
 
-    render(){
-        return(
+    render() {
+        return (
             <div className='Page'>
-                <BlockSet 
+                <BlockSet
                     blocks={this.state.blocks}
                     updateData={this.updateData}
                     edit={true}
                 />
 
-                <BlockSet 
+                <BlockSet
                     blocks={this.state.blocks}
                     edit={false}
                 />
             </div>
+            /*
+            <Test/>
+           */
         )
     }
 }

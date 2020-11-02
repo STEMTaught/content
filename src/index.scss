@@ -287,11 +287,11 @@ body{
         }
     }
 
-    div{
-        margin: 15px;
-    }
 }
 
+.Block:first-of-type:not(.edit) > div{
+    margin: 15px;
+}
 
 
 
@@ -334,6 +334,7 @@ body{
 
 .Reader{
     padding:15px;
+    position: relative;
 
     *{
         margin-bottom:15px;
@@ -343,3 +344,36 @@ body{
         width:100%;
     }
 }
+
+.ReaderText *{
+    padding:2px;
+    margin:0;
+}
+
+.ReaderText > div > p{
+    display: inline-block;
+}
+
+
+.AudioButtons{
+    display: flex;
+    //flex-flow: column nowrap;
+    height: auto;
+    //width: 24px;
+    //position: absolute;
+    margin:0;
+
+    button{
+        margin:0 5px;
+    }
+}
+
+
+p[highlight="true"] {
+    background-color: lightgreen;
+}
+
+p[highlight="false"] {
+    transition: background-color 2s;
+}
+
