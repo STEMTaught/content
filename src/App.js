@@ -1,5 +1,7 @@
 import React from 'react';
 import Dev from './views/Dev'
+import Viewer from './views/Viewer'
+import Editor from './views/Editor'
 
 class App extends React.Component {
     constructor(props) {
@@ -34,11 +36,10 @@ class App extends React.Component {
     render() {
         const params = new URLSearchParams(window.location.search)
         const view = params.get('view') || 'dev'
-        console.log('view',view)
 
-
-
-        return <Dev />
+        if (view === 'dev') return <Dev />
+        else if (view === 'editor') return <Editor />
+        else if (view === 'viewer') return <Viewer />
     }
 }
 
