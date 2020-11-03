@@ -1,5 +1,4 @@
 import React from 'react';
-import Dev from './views/Dev'
 import Viewer from './views/Viewer'
 import Editor from './views/Editor'
 
@@ -7,7 +6,7 @@ class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            blocks: [
+            blocks: [/*
                 {
                     type: 'reader',
                     data: {
@@ -48,44 +47,50 @@ class App extends React.Component {
                     data: {
                         text: `<p><span style="font-family: 'Open Sans', Arial, sans-serif; font-size: 14pt; text-align: justify; background-color: #ffffff;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</span></p>`
                     }
-                },
+                },*/
             ]
         }
 
         this.updateData = this.updateData.bind(this)
     }
-
+    
     sendMessage(msg) {
-        //console.log('[IFRAME] => wix:', msg)
-        //window.parent.postMessage(msg, '*')
+        console.log('Sending msg to parent', msg)
+        window.parent.postMessage(msg, '*')
     }
-
+    
     handleMessage(msg) {
-        //let data = msg.data
-        //console.log('wix => [IFRAME]:', data)
+        const data = msg.data
+        console.log('msg recieved from parent:', data)
+        if ('blocks' in data){
+            this.setState({'blocks':data['blocks']} )
+            console.log('blocks', data['blocks'])
+        }
         //this.sendMessage('Message to Wix')
-    }
 
+    }
+    
     componentDidMount() {
         // listen for messages
-        //window.addEventListener('message', (msg) => this.handleMessage(msg))
+        window.addEventListener('message', (msg) => this.handleMessage(msg))
+        
     }
-
+    
     updateData(newData) {
+        this.sendMessage({'blockUpdate':newData})
         this.setState(newData)
     }
    
 
     render() {
         const params = new URLSearchParams(window.location.search)
-        const view = params.get('view') || 'dev'
+        const view = params.get('view') || 'viewer'
 
         const {blocks} = this.state
 
-
-        if (view === 'dev') return <Dev blocks={blocks} updateData={this.updateData}/>
-        else if (view === 'editor') return <Editor blocks={blocks} updateData={this.updateData}/>
-        else if (view === 'viewer') return <Viewer blocks={blocks}/>
+        return (view === 'editor') 
+            ? <Editor blocks={blocks} updateData={this.updateData}/>
+            : <Viewer blocks={blocks}/>
     }
 }
 

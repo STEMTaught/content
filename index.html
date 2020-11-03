@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        body{
+            margin: 0;
+            font-family: sans-serif;
+            text-align: center;
+
+            background-color: #222;
+            overflow: hidden;
+        }
+        iframe{
+            width:615px;
+            height:90vh;
+            margin:5vh auto;
+            border:none;
+            outline: 1px solid #ccc
+        }
+    </style>
+
+
+</head>
+<body>
+    <div className='Dev'>
+        <iframe id='editor' src='http://localhost:3000/editor?view=editor'></iframe>
+        <iframe id='viewer' src='http://localhost:3000/editor?view=viewer'></iframe>
+    </div>
+
+    <script>
+        const viewer = document.getElementById('viewer')
+        const editor = document.getElementById('editor')
+
+        let blocks = []
+
+        // send data to iframe        
+        function sendMsg(msg, element){
+            console.log('sending msg:', msg, element)
+            element.contentWindow.postMessage(msg, '*') 
+        }
+
+        function handleMsg(msg){
+            console.log('got msg:', msg.data)
+            if (msg.data){
+
+                if ('blockUpdate' in msg.data){
+                    console.log('neat')
+                    blocks = msg.data.blockUpdate.blocks
+                    sendMsg({'blocks':blocks}, viewer)
+                }
+            }
+        }
+
+        window.addEventListener('message', (msg) => handleMsg(msg))
+
+    </script>
+</body>
+</html>

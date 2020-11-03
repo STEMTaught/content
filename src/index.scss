@@ -135,6 +135,7 @@ body{
     @extend %scrollBar;
     //padding: 10px 10px 0 10px;
     background-color: white;
+    width:615px;
 }
 
 .BlockSet:first-of-type{
@@ -232,7 +233,6 @@ body{
         height:auto;
         outline:none;
         border:none;
-        background-color: rgba(0, 0, 0, .5);
         margin:0;
     }
     div{
