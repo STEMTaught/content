@@ -36,6 +36,7 @@ body{
 %scrollBar{
     overflow-x: hidden;
     overflow-y: scroll;
+    max-height: 100vh;
 }
 
 //https://stackoverflow.com/questions/2310734/how-to-make-html-text-unselectable
@@ -122,25 +123,11 @@ body{
 
 
 
-.Page{
+.Dev{
     display: flex;
     flex-flow: row;
     align-items: flex-start;
     justify-content: flex-start;
-}
-
-.Page > .BlockSet{
-    height:90vh;
-    margin: 5vh auto; 
-    padding-bottom: 20px;
-}
-
-.Page > .BlockSet:first-of-type{
-    margin:0;
-    height:100vh;
-    padding: 50px;
-    width:715px;
-    align-self: start;
 }
 
 
@@ -304,6 +291,10 @@ body{
     }
 }
 
+.Block:not(.edit){
+    margin:0;
+}
+
 
 
 .Quiz{
@@ -331,6 +322,16 @@ body{
     }
 }
 
+
+
+
+.edit > .Reader{
+    background-color: white;
+    *{
+        outline: 1px solid #ccc;
+        border:none;
+    }
+}
 
 .Reader{
     padding:15px;
@@ -518,3 +519,15 @@ p[highlight="false"] {
     transition: background-color 2s;
 }
 
+
+
+
+
+
+
+iframe{
+    width:615px;
+    height:90vh;
+    margin:5vh auto;
+    border:none;
+}
