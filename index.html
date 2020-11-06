@@ -17,10 +17,10 @@
         }
         iframe{
             width:615px;
+            width: 300px;
             height:90vh;
             margin:5vh auto;
             border:none;
-            outline: 1px solid #ccc
         }
     </style>
 
@@ -28,32 +28,70 @@
 </head>
 <body>
     <div className='Dev'>
-        <iframe id='editor' src='http://localhost:3000/editor?view=editor'></iframe>
-        <iframe id='viewer' src='http://localhost:3000/editor?view=viewer'></iframe>
+        <iframe id='iframe' src='http://localhost:3000?view=editor'></iframe>
     </div>
 
     <script>
-        const viewer = document.getElementById('viewer')
-        const editor = document.getElementById('editor')
+        const iframe = document.getElementById('iframe')
 
-        let blocks = []
+        let data = undefined
 
         // send data to iframe        
-        function sendMsg(msg, element){
-            console.log('sending msg:', msg, element)
+        function sendMsg(type, data, element){
+            const msg = {type:type, data:data}
+            console.log('sending msg to iframe:', msg)
             element.contentWindow.postMessage(msg, '*') 
         }
 
         function handleMsg(msg){
-            console.log('got msg:', msg.data)
-            if (msg.data){
+            console.log('msg from iframe:', msg.data)
+            const {type, data} = msg.data
+            
+            // init data
+            const editorData = {
+                type:'editor', 
+                data:{ blocks:[] }
+            }
 
+            const viewerData = {
+                type:'viewer', 
+                data:{ blocks:[] }
+            }
+
+            const tocData = {
+                type:'toc', 
+                data: {
+                    selected: [1,'unit 1',1],
+                    pages: {
+                        0: {
+                            'unit 1': [1,2,3,4,5],
+                            'unit 2': [1,2,3,4],
+                            'unit 3': [1,2,3,4,5,6,7],
+                        },
+                        1: {
+                            'unit 1': [1,2,3,4,5],
+                            'unit 2': [1,2,3,4],
+                            'unit 3': [1,2,3,4,5,6,7],
+                        },
+                        2: {
+                            'unit 1': [1,2,3,4,5],
+                            'unit 2': [1,2,3,4],
+                            'unit 3': [1,2,3,4,5,6,7],
+                        }
+                    }
+                }
+            }
+
+            if (type === 'hello') sendMsg('init', tocData, iframe)
+            //if (type === '')
+            
+            /*if (msg.data){
                 if ('blockUpdate' in msg.data){
                     console.log('neat')
                     blocks = msg.data.blockUpdate.blocks
                     sendMsg({'blocks':blocks}, viewer)
                 }
-            }
+            }*/
         }
 
         window.addEventListener('message', (msg) => handleMsg(msg))

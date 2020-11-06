@@ -1,66 +1,43 @@
 import React from 'react'
+import IconButton from '../components/IconButton'
 
 class TOC extends React.Component {
     constructor(props){
         super(props)
-
-        this.state = {
-            grade: '',
-            unit: '',
-            page: '',
-        }
     }
     
-    
+    addPage(grade, unit){
+        console.log('add page', grade, unit)
+    }
+
     render() {
-        const {_grade, _unit, _page} = this.state
-
-        const data = {
-            0: {
-                'unit 1': [1,2,3,4,5],
-                'unit 2': [1,2,3,4],
-                'unit 3': [1,2,3,4,5,6,7],
-            },
-            1: {
-                'unit 1': [1,2,3,4,5],
-                'unit 2': [1,2,3,4],
-                'unit 3': [1,2,3,4,5,6,7],
-            },
-            2: {
-                'unit 1': [1,2,3,4,5],
-                'unit 2': [1,2,3,4],
-                'unit 3': [1,2,3,4,5,6,7],
-            }
-        }
-
-
-        let toReturn
-
-
-        toReturn = Object.keys(data).map(
+        const {selected, pages} = this.props    
+        
+        const toReturn = Object.keys(pages).map(
             grade => {
                 const label = `Grade ${grade}`
-
-                const units = Object.keys(data[grade]).map(
+                
+                const units = Object.keys(pages[grade]).map(
                     unit =>{
-                        const pages = data[grade][unit].map(page => <Page label={page}/>)
+                        const pagesToRender = pages[grade][unit].map(page => <Page label={page}/>)
                         
                         return (
                             <Unit label={unit}>
-                                {pages}
+                                {pagesToRender}
+                                <IconButton icon='add' className='addPage' handleClick={() => this.addPage(grade, unit)}/>
                             </Unit>
                         )
-                    }
-                )
-
+                })
+                
                 return (
                     <Grade label={label}>
-                        {units}
-                    </Grade>
-                )
-            }
+                    {units}
+                </Grade>
+            )
+        }
         )
-    
+        
+            
 
         return (
             <div className='TOC'>
@@ -74,14 +51,16 @@ class TOC extends React.Component {
 
 
 
-function Grade(props){
-    const {label} = props
-    return (
-        <div className='Grade'>
-            <p>{label}</p>
-            {props.children}
-        </div>
-    )
+class Grade extends React.Component{
+    render(){
+        const {label, children} = this.props
+        return (
+            <div className='Grade'>
+                <p>{label}</p>
+                {children}
+            </div>
+        )
+    }
 }
 
 function Unit(props){

@@ -5,10 +5,11 @@ body{
     margin: 0;
     font-family: 'Raleway', sans-serif;
     text-align: center;
-    background-color: rgba(255, 255, 255, 1);
-    background-color: #f0f0f0;
-    background-color: #d7dfe2;
-    background-color: #222;
+    //background-color: rgba(255, 255, 255, 1);
+    //background-color: #f0f0f0;
+    //background-color: #d7dfe2;
+    //background-color: #222;
+    //background-color: #fff;
     overflow: hidden;
 }
 
@@ -37,7 +38,7 @@ body{
 %scrollBar{
     overflow-x: hidden;
     overflow-y: scroll;
-    max-height: 100vh;
+    height: 100vh;
 }
 
 //https://stackoverflow.com/questions/2310734/how-to-make-html-text-unselectable
@@ -542,15 +543,15 @@ iframe{
 
 .TOC{
     @extend %scrollBar;
-    width:300px;
-    height:700px;
+    width:100vw;
+    height:100vh;
     background-color: white;
 
     p{
         margin:0;
     }
 
-    margin-top: 100px;
+    //margin-top: 100px;
 }
 
 
@@ -575,7 +576,7 @@ iframe{
     text-align: left;
     //border-left: 1px solid #ccc;
     
-    padding: 20px 0px;
+    padding: 10px 0px;
 
     *{
         padding:1px 5px;
@@ -596,4 +597,16 @@ iframe{
 .Page:hover{
     background-color: #eee;
     cursor: pointer;
+}
+
+.addPage{
+   
+    padding:0;
+    margin: 10px 25px;
+    font-size: 14pt;
+    cursor: pointer;
+}
+
+.addPage:hover{
+    background-color: #ccc;
 }
