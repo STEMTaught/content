@@ -1,6 +1,7 @@
 import React from 'react';
 import Viewer from './views/Viewer'
 import Editor from './views/Editor'
+import TOC from './views/TOC'
 
 class App extends React.Component {
     constructor(props) {
@@ -88,9 +89,15 @@ class App extends React.Component {
 
         const {blocks} = this.state
 
-        return (view === 'editor') 
-            ? <Editor blocks={blocks} updateData={this.updateData}/>
-            : <Viewer blocks={blocks}/>
+        if (view === 'editor') 
+            return <Editor blocks={blocks} updateData={this.updateData}/>
+        
+        else if (view === 'toc')
+            return <TOC/>
+
+
+        else 
+            return <Viewer blocks={blocks}/>
     }
 }
 

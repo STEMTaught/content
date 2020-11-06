@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap');
 
 body{
     margin: 0;
-    font-family: sans-serif;
+    font-family: 'Raleway', sans-serif;
     text-align: center;
     background-color: rgba(255, 255, 255, 1);
     background-color: #f0f0f0;
@@ -51,7 +52,7 @@ body{
 }
 
 *{
-    font-family: sans-serif;
+    font-family: 'Raleway', sans-serif;
     box-sizing: border-box;
     font-size: 14pt;
 }  
@@ -530,4 +531,69 @@ iframe{
     height:90vh;
     margin:5vh auto;
     border:none;
+}
+
+
+
+
+
+
+
+
+.TOC{
+    @extend %scrollBar;
+    width:300px;
+    height:700px;
+    background-color: white;
+
+    p{
+        margin:0;
+    }
+
+    margin-top: 100px;
+}
+
+
+.Grade{
+    margin:0px;
+}
+
+.Grade > p{
+    padding:10px;
+    background-color: #333;
+    //border: 1px solid #ccc;
+    color:white;
+    text-align: left;
+    font-weight: 700;
+    position: sticky;
+    top:0;
+}
+
+.Unit{
+    background-color: white;
+    //border: 1px solid #ccc;
+    text-align: left;
+    //border-left: 1px solid #ccc;
+    
+    padding: 20px 0px;
+
+    *{
+        padding:1px 5px;
+    }
+}
+
+.Unit > p{
+    font-weight: 600;
+    margin-bottom:2px;
+    padding:0 15px 5px 15px;
+}
+
+.Page{
+    padding:0 25px;
+    //border-left:1px solid #ccc;
+}
+
+.Page:hover{
+    background-color: #eee;
+    cursor: pointer;
 }
