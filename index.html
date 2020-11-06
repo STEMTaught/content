@@ -34,7 +34,7 @@
     <script>
         const iframe = document.getElementById('iframe')
 
-        let data = undefined
+        let pageData = undefined
 
         // send data to iframe        
         function sendMsg(type, data, element){
@@ -83,7 +83,10 @@
             }
 
             if (type === 'hello') sendMsg('init', tocData, iframe)
-            //if (type === '')
+            if (type === 'update') pageData = data
+            console.log('new data:', pageData)
+
+            
             
             /*if (msg.data){
                 if ('blockUpdate' in msg.data){

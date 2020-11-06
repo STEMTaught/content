@@ -4,14 +4,27 @@ import IconButton from '../components/IconButton'
 class TOC extends React.Component {
     constructor(props){
         super(props)
+
+        this.updateSelected = this.updateSelected.bind(this)
     }
     
     addPage(grade, unit){
         console.log('add page', grade, unit)
     }
 
+
+
+    updateSelected(grade, unit, page){
+        this.props.updateData({
+                pages:this.props.pages,
+                selected:[grade, unit, page]
+            })
+    }
+
+
     render() {
-        const {selected, pages} = this.props    
+        const {selected, pages} = this.props
+        const [sgrade, sunit, spage] = selected
         
         const toReturn = Object.keys(pages).map(
             grade => {
@@ -19,7 +32,11 @@ class TOC extends React.Component {
                 
                 const units = Object.keys(pages[grade]).map(
                     unit =>{
-                        const pagesToRender = pages[grade][unit].map(page => <Page label={page}/>)
+                        const pagesToRender = pages[grade][unit].map(page => {
+                            const selected = (grade == sgrade && unit == sunit && page == spage)
+                            const handleClick = () => this.updateSelected(grade, unit, page)
+                            return <Page label={page} selected={selected} handleClick={handleClick}/>
+                        })
                         
                         return (
                             <Unit label={unit}>
@@ -76,9 +93,9 @@ function Unit(props){
 
 
 function Page(props){
-    const {label} = props
+    const {label, selected, handleClick} = props
     return (
-        <div className='Page'>
+        <div className={'Page ' + (selected ? 'selected' : '')} onClick={() => handleClick()}>
             <p>{label}</p>
         </div>
     )

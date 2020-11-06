@@ -18,19 +18,19 @@ class App extends React.Component {
     
     sendMessage(type, data) {
         const msg = {type:type, data:data}
-        console.log('msg to parent:', msg)
+        //console.log('msg to parent:', msg)
         window.parent.postMessage(msg, '*')
     }
     
     handleInit(_data){
         const {type, data} = _data
         this.setState({type:type,data:data})
-        console.log('state', this.state)
+        //console.log('state', this.state)
     }
 
     handleMessage(msg) {
         const {type, data} = msg.data
-        console.log('msg from parent', msg.data)
+        //console.log('msg from parent', msg.data)
 
         if (type === 'init'){
             this.handleInit(data)
@@ -53,8 +53,10 @@ class App extends React.Component {
     }
     
     updateData(newData) {
-        this.sendMessage({'blockUpdate':newData})
-        this.setState(newData)
+        //this.sendMessage({'blockUpdate':newData})
+        this.sendMessage('update', newData)
+        //console.log('NEEEEW',newData)
+        this.setState({data:newData})
     }
    
 
@@ -67,7 +69,7 @@ class App extends React.Component {
 
         if (type === 'editor') return <Editor blocks={data.blocks} updateData={this.updateData}/>
         if (type === 'viewer') return <Viewer blocks={data.blocks}/>
-        if (type === 'toc') return <TOC selected={data.selected} pages={data.pages}/>
+        if (type === 'toc') return <TOC selected={data.selected} pages={data.pages} updateData={this.updateData}/>
 
 
         return <p>Loading...</p>
