@@ -12,8 +12,9 @@ class App extends React.Component {
         }
 
         this.updateData = this.updateData.bind(this)
-        this.handleInit = this.handleInit.bind(this)
+        //this.handleInit = this.handleInit.bind(this)
         this.attemptConnect = this.attemptConnect.bind(this)
+      
     }
     
     sendMessage(type, data) {
@@ -21,19 +22,25 @@ class App extends React.Component {
         //console.log('msg to parent:', msg)
         window.parent.postMessage(msg, '*')
     }
-    
+    /*
     handleInit(_data){
         const {type, data} = _data
         this.setState({type:type,data:data})
         //console.log('state', this.state)
     }
+    */
+
 
     handleMessage(msg) {
         const {type, data} = msg.data
-        //console.log('msg from parent', msg.data)
+        console.log('msg from parent', msg.data.data)
 
         if (type === 'init'){
-            this.handleInit(data)
+            this.setState({type:data.type,data:data.data})
+        }
+
+        if (type === 'update'){
+            this.setState({data:data})
         }
     }
     
@@ -61,6 +68,8 @@ class App extends React.Component {
 
     render() {
         const {type, data} = this.state
+
+        console.log('state',this.state)
 
         if (type === 'editor') return <Editor blocks={data.blocks} updateData={this.updateData}/>
         if (type === 'viewer') return <Viewer blocks={data.blocks}/>
