@@ -43,7 +43,7 @@ class App extends React.Component {
             setTimeout(() => {
                 this.sendMessage('hello', '')
                 this.attemptConnect()
-            }, 50);
+            }, 500);
         }
     }
 
@@ -55,17 +55,12 @@ class App extends React.Component {
     updateData(newData) {
         //this.sendMessage({'blockUpdate':newData})
         this.sendMessage('update', newData)
-        //console.log('NEEEEW',newData)
         this.setState({data:newData})
     }
    
 
     render() {
-        const params = new URLSearchParams(window.location.search)
-        const view = params.get('view') || 'viewer'
-
         const {type, data} = this.state
-
 
         if (type === 'editor') return <Editor blocks={data.blocks} updateData={this.updateData}/>
         if (type === 'viewer') return <Viewer blocks={data.blocks}/>

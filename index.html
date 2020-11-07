@@ -16,8 +16,8 @@
             overflow: hidden;
         }
         iframe{
-            width:615px;
             width: 300px;
+            width:615px;
             height:90vh;
             margin:5vh auto;
             border:none;
@@ -82,12 +82,12 @@
                 }
             }
 
-            if (type === 'hello') sendMsg('init', tocData, iframe)
+            if (type === 'hello') sendMsg('init', editorData, iframe)
             if (type === 'update') pageData = data
             console.log('new data:', pageData)
 
             
-            
+
             /*if (msg.data){
                 if ('blockUpdate' in msg.data){
                     console.log('neat')
