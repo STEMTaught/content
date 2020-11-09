@@ -138,6 +138,11 @@ body{
     //padding: 10px 10px 0 10px;
     background-color: white;
     width:615px;
+    width: 100vw;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+
 }
 
 .BlockSet:first-of-type{
