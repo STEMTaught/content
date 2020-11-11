@@ -4,12 +4,19 @@ import IconButton from '../components/IconButton'
 class TOC extends React.Component {
     constructor(props){
         super(props)
-
         this.updateSelected = this.updateSelected.bind(this)
+        
     }
     
     addPage(grade, unit){
-        console.log('add page', grade, unit)
+        //console.log('add page', grade, unit)
+        const {pages} = this.props
+
+        let newPages = pages
+        const newPageNumber = newPages[grade][unit].length+1
+        newPages[grade][unit].push(newPageNumber)
+
+        this.props.updateData({pages:newPages})
     }
 
 

@@ -59,9 +59,10 @@ class App extends React.Component {
         this.attemptConnect()
     }
     
-    updateData(newData) {
+    updateData(data) {
         //this.sendMessage({'blockUpdate':newData})
-        this.sendMessage('update', newData)
+        this.sendMessage('update', data)
+        const newData = {...this.state.data, ...data}
         this.setState({data:newData})
     }
    
