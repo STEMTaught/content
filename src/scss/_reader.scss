@@ -133,13 +133,15 @@ p[highlight="false"] {
 }
 
 
+
 .edit > .Reader{
     background-color: white;
     display: flex;
     flex-flow: column nowrap;
     padding:15px;
     *{
-        outline: 1px solid #ccc;
+        //outline: 1px solid #ccc;
+        outline:none;
         border:none;
     }
 }
@@ -157,6 +159,7 @@ p[highlight="false"] {
 
     input{
         width:100%;
+        
     }
 }
 

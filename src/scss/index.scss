@@ -148,7 +148,7 @@ body{
     width:600px;
     display: flex;
     flex-flow: row nowrap;
-    margin: 0 0 2px 0;
+    margin: 0 0 25px 0;
     padding: 15px;
     background-color: white;
     position: relative;
@@ -157,11 +157,16 @@ body{
 .Block.edit{
     background-color: transparent;
     padding:0;
+
+    input{
+        margin:10px 0;
+        border-bottom: 1px solid #ccc;
+    }
 }
 
 .Block>div:first-of-type{
     width: 100%;
-    min-height: 110px;
+    //min-height: 110px;
 }
 
 .Block.edit > div:first-of-type{
