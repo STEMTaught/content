@@ -60,6 +60,7 @@ body{
 
 
 
+
 .IconButton{
     background-color: rgba(0, 0, 0, .1);
     border-radius: 50%;
@@ -143,10 +144,6 @@ body{
     flex-flow: column nowrap;
     align-items: center;
 
-}
-
-.BlockSet:first-of-type{
-    background-color: #eee;
 }
 
 
@@ -343,6 +340,8 @@ body{
 .Reader{
     padding:15px;
     position: relative;
+    display: flex;
+    flex-flow: row nowrap;
 
     *{
         margin-bottom:15px;
@@ -399,101 +398,102 @@ body{
 
     *{
         padding:2px;
-        margin:0;
+        margin:2px 0;
+        text-align: left;
     }
 
     .TitleBlue,
-        .ParagraphBlue {
-            color: #288dfa;
-        }
+    .ParagraphBlue {
+        color: #288dfa;
+    }
 
-        .IndentGreen,
-        .IndentGreenBold {
-            color: #1adb3e;
-        }
+    .IndentGreen,
+    .IndentGreenBold {
+        color: #1adb3e;
+    }
 
-        .Caption,
-        .Prompt {
-            font-size: 11pt;
-        }
+    .Caption,
+    .Prompt {
+        font-size: 11pt;
+    }
 
-        .Paragraph,
-        .Bullet,
-        .Indent,
-        .IndentBold,
-        .ParagraphCentered,
-        .IndentGreen,
-        .IndentGreenBold {
-            font-size: 12pt;
-        }
+    .Paragraph,
+    .Bullet,
+    .Indent,
+    .IndentBold,
+    .ParagraphCentered,
+    .IndentGreen,
+    .IndentGreenBold {
+        font-size: 12pt;
+    }
 
-        .TitleBlue {
-            font-size: 13pt;
-        }
+    .TitleBlue {
+        font-size: 13pt;
+    }
 
-        .Subtitle,
-        .ParagraphBlue {
-            font-size: 14pt;
-        }
+    .Subtitle,
+    .ParagraphBlue {
+        font-size: 14pt;
+    }
 
-        .Title,
-        .TitleCentered {
-            font-size: 16pt;
-        }
+    .Title,
+    .TitleCentered {
+        font-size: 16pt;
+    }
 
-        .TitleCentered,
-        .ParagraphCentered,
-        .ParagraphBlue {
-            text-align: center;
-        }
+    .TitleCentered,
+    .ParagraphCentered,
+    .ParagraphBlue {
+        text-align: center;
+    }
 
-        .Title,
-        .Subtitle,
-        .IndentBold,
-        .TitleCentered,
-        .IndentGreenBold {
-            font-weight: bold;
-        }
+    .Title,
+    .Subtitle,
+    .IndentBold,
+    .TitleCentered,
+    .IndentGreenBold {
+        font-weight: bold;
+    }
 
-        .Caption {
-            font-style: italic;
-        }
+    .Caption {
+        font-style: italic;
+    }
 
-        .Bullet,
-        .Indent,
-        .IndentBold,
-        .IndentGreen,
-        .IndentGreenBold {
-            padding-left: 20px;
-            margin: -10px 0;
-        }
-
-
-
-        p[highlight="true"],
-        .TitleBlue p[highlight="true"],
-        .ParagraphBlue>p[highlight="true"] {
-            background-color: rgba(40, 141, 250, 0.2);
-            background-color: lightgreen;
-        }
-
-
-        .IndentGreen>p[highlight="true"],
-        .IndentGreenBold>p[highlight="true"] {
-            background-color: rgba(26, 219, 62, 0.2);
-            background-color: lightgreen;
-        }
+    .Bullet,
+    .Indent,
+    .IndentBold,
+    .IndentGreen,
+    .IndentGreenBold {
+        padding-left: 20px;
+        margin: -5px 0;
+    }
 
 
 
-        .FontSize20pt{ font-size: 20pt }
-        .FontSize19pt{ font-size: 19pt }
-        .FontSize18pt{ font-size: 18pt }
-        .FontSize17pt{ font-size: 17pt }
-        .FontSize16pt{ font-size: 16pt }
-        .FontSize15pt{ font-size: 15pt }
-        .FontSize14pt{ font-size: 14pt }
-        .FontSize13pt{ font-size: 13pt }
+    p[highlight="true"],
+    .TitleBlue p[highlight="true"],
+    .ParagraphBlue>p[highlight="true"] {
+        background-color: rgba(40, 141, 250, 0.2);
+        background-color: lightgreen;
+    }
+
+
+    .IndentGreen>p[highlight="true"],
+    .IndentGreenBold>p[highlight="true"] {
+        background-color: rgba(26, 219, 62, 0.2);
+        background-color: lightgreen;
+    }
+
+
+
+    .FontSize20pt{ font-size: 20pt }
+    .FontSize19pt{ font-size: 19pt }
+    .FontSize18pt{ font-size: 18pt }
+    .FontSize17pt{ font-size: 17pt }
+    .FontSize16pt{ font-size: 16pt }
+    .FontSize15pt{ font-size: 15pt }
+    .FontSize14pt{ font-size: 14pt }
+    .FontSize13pt{ font-size: 13pt }
     
 } 
 
@@ -506,14 +506,14 @@ body{
 
 .AudioButtons{
     display: flex;
-    //flex-flow: column nowrap;
+    flex-flow: column nowrap;
     height: auto;
     //width: 24px;
     //position: absolute;
     margin:0;
 
     button{
-        margin:0 5px;
+        margin:5px;
     }
 }
 
