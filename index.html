@@ -11,16 +11,22 @@
             margin: 0;
             font-family: sans-serif;
             text-align: center;
-
-           
             overflow: hidden;
+            background-color: #222;
+          }
+          
+          #Dev{
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+
         }
 
         iframe{
-            height:100vh;
+            height:90vh;
             width: 615px;
-            width: 100vw;
-            outline: none;
+            margin: 5vh auto;
+            outline: 2px solid #555;
             border:none;
         }
 
@@ -29,35 +35,18 @@
 
 </head>
 <body>
-    <div className='Dev'>
-        <iframe id='iframe' src='http://localhost:3000?view=editor'></iframe>
+    <div id='Dev'>
+        <iframe id='iframe' src='http://localhost:3000'></iframe>
+        <iframe id='viewer' src='http://localhost:3000'></iframe>
     </div>
 
     <script>
         const iframe = document.getElementById('iframe')
+        const iframe2 = document.getElementById('viewer')
 
         let pageData = undefined
 
-        // send data to iframe        
-        function sendMsg(type, data, element){
-            const msg = {type:type, data:data}
-            console.log('sending msg to iframe:', msg)
-            element.contentWindow.postMessage(msg, '*') 
-        }
-
-        function handleMsg(msg){
-            console.log('msg from iframe:', msg.data)
-            const {type, data} = msg.data
-            
-            // init data
-            const editorData = {
-                type:'editor', 
-                data:{ blocks:[] }
-            }
-
-            const viewerData = {
-                type:'editor', 
-                data:{ blocks:[
+        let blocks = [
   {
     "type": "image",
     "data": {
@@ -127,9 +116,63 @@
       "description": "Chest with key"
     }
   }
-] }
+] 
+        blocks = [{type:'prompt', data:{text:'This is a prompt'}}]
+
+
+
+        // send data to iframe        
+        function sendMsg(type, data, element){
+            const msg = {type:type, data:data}
+            console.log('sending msg to iframe:', msg)
+            element.contentWindow.postMessage(msg, '*') 
+        }
+
+        function handleMsg(msg){
+            console.log('msg from iframe:', msg.data)
+            const {type, data} = msg.data
+            
+            
+            const x = {
+                    pages: {
+                        0: {
+                            'unit 1': [1,2,3,4,5],
+                            'unit 2': [1,2,3,4],
+                            'unit 3': [1,2,3,4,5,6,7],
+                        }
+                    }}
+
+            if (type === 'hello'){
+                pageData = {blocks:blocks}
+                sendMsg('init', {type:'editor', data:{blocks:blocks}}, iframe)
+                sendMsg('init', {type:'viewer', data:{blocks:blocks}}, iframe2)
             }
 
+            if (type === 'update') {
+
+                console.log('\n\nOldPageData:', pageData)
+
+                pageData = {...pageData, ...data}
+                console.log('\t\tData:',data)
+
+                console.log('\n\nNewPageData:', pageData)
+                sendMsg('update', pageData, iframe)
+                sendMsg('update', pageData, iframe2)
+            }
+        }
+
+        window.addEventListener('message', (msg) => handleMsg(msg))
+
+
+
+
+
+
+
+
+
+
+        /*
             const tocData = {
                 type:'toc', 
                 data: {
@@ -153,47 +196,7 @@
                     }
                 }
             }
-
-            const x = {
-                    pages: {
-                        0: {
-                            'unit 1': [1,2,3,4,5],
-                            'unit 2': [1,2,3,4],
-                            'unit 3': [1,2,3,4,5,6,7],
-                        }
-                    }}
-
-            if (type === 'hello'){
-                pageData = viewerData.data
-                sendMsg('init', viewerData, iframe)
-            }
-
-            if (type === 'update') {
-
-                console.log('\n\nOldPageData:', pageData)
-
-                pageData = {...pageData, ...data}
-                console.log('\t\tData:',data)
-
-                console.log('\n\nNewPageData:', pageData)
-                sendMsg('update', pageData, iframe)
-            }
-            
-            
-            //console.log('new data:', pageData)
-
-            
-
-            /*if (msg.data){
-                if ('blockUpdate' in msg.data){
-                    console.log('neat')
-                    blocks = msg.data.blockUpdate.blocks
-                    sendMsg({'blocks':blocks}, viewer)
-                }
-            }*/
-        }
-
-        window.addEventListener('message', (msg) => handleMsg(msg))
+            */
 
     </script>
 </body>

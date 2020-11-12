@@ -1,0 +1,20 @@
+.Prompt{
+    padding:10px;
+    background-color: white;
+}
+
+.Prompt > p{
+    text-align: left;
+    font-weight: 600;
+    margin:10px;
+}
+
+.Prompt > .userInput{
+    border: 1px solid #ccc;
+    padding:10px;
+    border-radius: 10px;
+}
+
+.Prompt > .promptText{
+    border-bottom: 1px solid #ccc;
+}

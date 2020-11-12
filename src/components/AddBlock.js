@@ -14,13 +14,15 @@ class AddBlock extends React.Component{
             text: {text:''},
             image: {url:'', description:''},
             question: {question:'', answers:[''], correct:''},
-            reader: {content:''}
+            reader: {content:''},
+            prompt: {text:''},
         }
 
         const type = this.state.type
         
         // add a new block of the specified type
         if (Object.keys(defaultBlocks).includes(type)){
+            console.log('TYPE:',type)
             let block = {
                 type: type,
                 data: defaultBlocks[type]
@@ -40,6 +42,7 @@ class AddBlock extends React.Component{
             'Image': 'image',
             'Question': 'question',
             'Reader': 'reader',
+            'Prompt': 'prompt',
         }
 
         const options = Object.keys(types).map(
