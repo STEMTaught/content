@@ -45,7 +45,7 @@ class Editor extends React.Component{
             <div className='Image'>
                 {image}
                 <div>
-                    <input type='text' placeholder='Description' onChange={this.updateDescription} value={description}/>    
+                    <input type='text' placeholder='Alt Text' onChange={this.updateDescription} value={description}/>    
                     <input className='url' type='url' placeholder='Photo URL' onChange={this.updateUrl} value={url}/>
                 </div>
             </div>
@@ -69,14 +69,15 @@ class Content extends React.Component{
             ? <img src={url} alt={description || ''}/>
             : ''
 
+        /*
         const desc = description
             ? <h5>{description}</h5>
             : ''
+        */
 
         return (
             <div className='Image'>
                 {image}
-                {desc}
             </div>
         )
     }

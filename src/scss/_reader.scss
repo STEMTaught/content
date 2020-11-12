@@ -1,0 +1,162 @@
+
+.ReaderText{
+    *{
+        padding:2px;
+        margin:2px 0;
+        text-align: left;
+    }
+
+    .TitleBlue,
+    .ParagraphBlue {
+        color: #288dfa;
+    }
+
+    .IndentGreen,
+    .IndentGreenBold {
+        color: #1adb3e;
+    }
+
+    .Caption,
+    .Prompt {
+        font-size: 11pt;
+    }
+
+    .Paragraph,
+    .Bullet,
+    .Indent,
+    .IndentBold,
+    .ParagraphCentered,
+    .IndentGreen,
+    .IndentGreenBold {
+        font-size: 12pt;
+    }
+
+    .TitleBlue {
+        font-size: 13pt;
+    }
+
+    .Subtitle,
+    .ParagraphBlue {
+        font-size: 14pt;
+    }
+
+    .Title,
+    .TitleCentered {
+        font-size: 16pt;
+        font-size: 20pt !important;
+    }
+
+    .TitleCentered,
+    .ParagraphCentered,
+    .ParagraphBlue {
+        text-align: center;
+    }
+
+    .Title,
+    .Subtitle,
+    .IndentBold,
+    .TitleCentered,
+    .IndentGreenBold {
+        font-weight: bold;
+    }
+
+    .Caption {
+        font-style: italic;
+    }
+
+    .Bullet,
+    .Indent,
+    .IndentBold,
+    .IndentGreen,
+    .IndentGreenBold {
+        padding-left: 20px;
+        margin: -5px 0;
+    }
+
+
+
+    p[highlight="true"],
+    .TitleBlue p[highlight="true"],
+    .ParagraphBlue>p[highlight="true"] {
+        background-color: rgba(40, 141, 250, 0.2);
+        background-color: lightgreen;
+    }
+
+
+    .IndentGreen>p[highlight="true"],
+    .IndentGreenBold>p[highlight="true"] {
+        background-color: rgba(26, 219, 62, 0.2);
+        background-color: lightgreen;
+    }
+
+
+
+    .FontSize20pt{ font-size: 20pt !important }
+    .FontSize19pt{ font-size: 20pt !important }
+    .FontSize18pt{ font-size: 20pt !important}
+    .FontSize17pt{ font-size: 16pt !important}
+    .FontSize16pt{ font-size: 16pt !important}
+    .FontSize15pt{ font-size: 16pt !important}
+    .FontSize14pt{ font-size: 14pt !important}
+    .FontSize13pt{ font-size: 14pt !important}
+    
+} 
+
+
+
+.ReaderText > div > p{
+    display: inline-block;
+}
+
+
+.AudioButtons{
+    display: flex;
+    flex-flow: column nowrap;
+    height: auto;
+    //width: 24px;
+    //position: absolute;
+    margin:0;
+
+    button{
+        margin-top:10px;
+        margin-right:5px;
+    }
+}
+
+
+p[highlight="true"] {
+    background-color: lightgreen;
+}
+
+p[highlight="false"] {
+    transition: background-color 2s;
+}
+
+
+.edit > .Reader{
+    background-color: white;
+    display: flex;
+    flex-flow: column nowrap;
+    padding:15px;
+    *{
+        outline: 1px solid #ccc;
+        border:none;
+    }
+}
+
+.Reader{
+    padding:15px 0;
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    
+    *{
+        margin-bottom:15px;
+
+    }
+
+    input{
+        width:100%;
+    }
+}
+

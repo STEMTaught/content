@@ -41,7 +41,7 @@ class Editor extends React.Component{
         return (
             <div className='Reader'>
                 <input type='text' placeholder='Audio file url' className='url' onChange={this.updateUrl} value={url}/>
-                <ResizableTextarea placeholder='Paste reader data here' onChange={this.updateContent} value={content}/>
+                <input placeholder='Paste reader data here' onChange={this.updateContent} value={content}/>
             </div>
         )
     }
