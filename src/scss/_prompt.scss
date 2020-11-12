@@ -1,18 +1,21 @@
 .Prompt{
-    padding:10px;
+    padding: 15px 35px;
     background-color: white;
 }
 
 .Prompt > p{
     text-align: left;
-    font-weight: 600;
-    margin:10px;
+    //font-weight: 600;
+    font-size: 12pt;
+    font-style: italic;
+    margin:10px 0;
 }
 
 .Prompt > .userInput{
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     padding:10px;
     border-radius: 10px;
+    font-size: 12pt;
 }
 
 .Prompt > .promptText{
