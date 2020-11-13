@@ -9,9 +9,8 @@ class TOC extends React.Component {
     }
     
     addPage(grade, unit){
-        //console.log('add page', grade, unit)
         const {pages} = this.props
-
+        
         let newPages = pages
         const newPageNumber = newPages[grade][unit].length+1
         newPages[grade][unit].push(newPageNumber)
@@ -39,10 +38,10 @@ class TOC extends React.Component {
                 
                 const units = Object.keys(pages[grade]).map(
                     unit =>{
-                        const pagesToRender = pages[grade][unit].map(page => {
+                        const pagesToRender = pages[grade][unit].map((page, index) => {
                             const selected = (grade == sgrade && unit == sunit && page == spage)
                             const handleClick = () => this.updateSelected(grade, unit, page)
-                            return <Page label={page} selected={selected} handleClick={handleClick}/>
+                            return <Page label={index+1} selected={selected} handleClick={handleClick}/>
                         })
                         
                         return (

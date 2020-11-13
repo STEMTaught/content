@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        body{
+            margin: 0;
+            font-family: sans-serif;
+            text-align: center;
+            overflow: hidden;
+            background-color: #222;
+          }
+          
+          #Dev{
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+
+        }
+
+        iframe{
+            height:90vh;
+            width: 300px;
+            margin: 5vh auto;
+            outline: 2px solid #555;
+            border:none;
+        }
+
+    </style>
+
+
+</head>
+<body>
+    <div id='Dev'>
+        <iframe id='iframe' src='http://localhost:3000'></iframe>
+    </div>
+
+    <script>
+        const iframe = document.getElementById('iframe')
+        const iframe2 = document.getElementById('viewer')
+
+        const tocData = {
+                    selected: [1,'unit 1',1],
+                    pages: {
+                        0: {
+                            'unit 1': [[],[]],
+                        }
+                    }
+                }
+            
+
+
+        // send data to iframe        
+        function sendMsg(type, data, element){
+            const msg = {type:type, data:data}
+            console.log('sending msg to iframe:', msg)
+            element.contentWindow.postMessage(msg, '*') 
+        }
+
+        function handleMsg(msg){
+            console.log('msg from iframe:', msg.data)
+            const {type, data} = msg.data
+            
+
+            if (type === 'hello'){
+                sendMsg('init', {type:'toc', data:tocData}, iframe)
+            }
+
+            if (type === 'update') {
+
+                console.log('\n\nOldPageData:', pageData)
+
+                pageData = {...pageData, ...data}
+                console.log('\t\tData:',data)
+
+                console.log('\n\nNewPageData:', pageData)
+                sendMsg('update', pageData, iframe)
+
+            }
+        }
+
+        window.addEventListener('message', (msg) => handleMsg(msg))
+
+
+
+
+
+
+
+
+
+
+        /*
+           
+            */
+
+    </script>
+</body>
+</html>
