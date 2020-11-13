@@ -1,0 +1,13 @@
+.Video{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.Video > input{
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+}

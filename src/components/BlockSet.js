@@ -7,6 +7,7 @@ import Text from './Text'
 import Question from './Question'
 import Reader from './Reader'
 import Prompt from './Prompt'
+import Video from './Video'
 
 class BlockSet extends React.Component{
     constructor(props){
@@ -81,6 +82,7 @@ class BlockSet extends React.Component{
                     'question': <Question edit={edit} data={data} index={index} updateBlock={this.updateBlock}/>,
                     'reader': <Reader edit={edit} data={data} index={index} updateBlock={this.updateBlock}/>,
                     'prompt': <Prompt edit={edit} data={data} index={index} updateBlock={this.updateBlock}/>,
+                    'video': <Video edit={edit} data={data} index={index} updateBlock={this.updateBlock}/>,
                 }
 
                 const controls = edit

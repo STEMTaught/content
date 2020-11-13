@@ -16,6 +16,7 @@ class AddBlock extends React.Component{
             question: {question:'', answers:[''], correct:''},
             reader: {content:''},
             prompt: {text:''},
+            video: {url:''},
         }
 
         const type = this.state.type
@@ -43,6 +44,7 @@ class AddBlock extends React.Component{
             'Question': 'question',
             'Reader': 'reader',
             'Prompt': 'prompt',
+            'Video': 'video',
         }
 
         const options = Object.keys(types).map(

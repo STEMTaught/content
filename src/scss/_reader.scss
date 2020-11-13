@@ -1,4 +1,12 @@
 
+.ReaderText > .Prompt > p{
+    margin:2px 0 !important;
+}
+
+.ReaderText>.Prompt{
+    padding:2px;
+}
+
 .ReaderText{
     *{
         padding:2px;
@@ -19,6 +27,7 @@
     .Caption,
     .Prompt {
         font-size: 11pt;
+        
     }
 
     .Paragraph,

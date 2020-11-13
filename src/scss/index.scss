@@ -12,6 +12,7 @@ body{
 
 @import 'reader';
 @import 'prompt';
+@import 'video';
 
 ::-webkit-scrollbar {
     width: 15px;
@@ -232,7 +233,7 @@ body{
 
 
 
-.url{
+.url, .ellipsis{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

@@ -38,10 +38,12 @@ class Editor extends React.Component{
     
     render(){
         const {content, url} = this.props.data
+        const contentFormatted = content.replace(/\s/g,'')
+
         return (
             <div className='Reader'>
                 <input type='text' placeholder='Audio file url' className='url' onChange={this.updateUrl} value={url}/>
-                <input placeholder='Paste reader data here' onChange={this.updateContent} value={content}/>
+                <input placeholder='Paste reader data here' onChange={this.updateContent} value={contentFormatted}/>
             </div>
         )
     }
@@ -59,7 +61,7 @@ class Content extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            position: -1,
+            position: -2,
             playing: false,
             audio: new Audio(props.data.url)
         }
@@ -79,7 +81,7 @@ class Content extends React.Component{
     restartAudio() {
         this.setState({
             playing: false,
-            position: -1
+            position: -2
         })
         this.state.audio.pause()
         this.state.audio.currentTime = 0
