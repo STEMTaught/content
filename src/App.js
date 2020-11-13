@@ -13,28 +13,19 @@ class App extends React.Component {
         }
 
         this.updateData = this.updateData.bind(this)
-        //this.handleInit = this.handleInit.bind(this)
         this.attemptConnect = this.attemptConnect.bind(this)
       
     }
     
     sendMessage(type, data) {
         const msg = {type:type, data:data}
-        //console.log('msg to parent:', msg)
         window.parent.postMessage(msg, '*')
     }
-    /*
-    handleInit(_data){
-        const {type, data} = _data
-        this.setState({type:type,data:data})
-        //console.log('state', this.state)
-    }
-    */
+
 
 
     handleMessage(msg) {
         const {type, data} = msg.data
-        console.log('msg from parent', msg.data.data)
 
         if (type === 'init'){
             this.setState({type:data.type,data:data.data})
@@ -61,9 +52,13 @@ class App extends React.Component {
     }
     
     updateData(data) {
-        //this.sendMessage({'blockUpdate':newData})
         this.sendMessage('update', data)
         const newData = {...this.state.data, ...data}
+        console.log('updating data:')
+        console.log('  state.data:', this.state.data)
+        console.log('  data:', data)
+        console.log('  newData:', newData)
+
         this.setState({data:newData})
     }
    
@@ -71,7 +66,7 @@ class App extends React.Component {
     render() {
         const {type, data} = this.state
 
-        console.log('state',this.state)
+        //console.log('state',this.state)
 
         if (type === 'editor') return <Editor blocks={data.blocks} updateData={this.updateData}/>
         if (type === 'viewer') return <Viewer blocks={data.blocks}/>

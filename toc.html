@@ -24,7 +24,7 @@
 
         iframe{
             height:90vh;
-            width: 300px;
+            width: 400px;
             margin: 5vh auto;
             outline: 2px solid #555;
             border:none;
@@ -43,11 +43,14 @@
         const iframe = document.getElementById('iframe')
         const iframe2 = document.getElementById('viewer')
 
-        const tocData = {
+        let tocData = {
                     selected: [1,'unit 1',1],
                     pages: {
+                        5: {
+                            'Mixtures and Pure Substances': 2
+                        },
                         0: {
-                            'unit 1': [[],[]],
+                            'Other': 2
                         }
                     }
                 }
@@ -57,12 +60,12 @@
         // send data to iframe        
         function sendMsg(type, data, element){
             const msg = {type:type, data:data}
-            console.log('sending msg to iframe:', msg)
+            //console.log('sending msg to iframe:', msg)
             element.contentWindow.postMessage(msg, '*') 
         }
 
         function handleMsg(msg){
-            console.log('msg from iframe:', msg.data)
+            //console.log('msg from iframe:', msg.data)
             const {type, data} = msg.data
             
 
@@ -72,13 +75,10 @@
 
             if (type === 'update') {
 
-                console.log('\n\nOldPageData:', pageData)
-
-                pageData = {...pageData, ...data}
-                console.log('\t\tData:',data)
-
-                console.log('\n\nNewPageData:', pageData)
-                sendMsg('update', pageData, iframe)
+                tocData = {...tocData, ...data}
+                //console.log('\t\tData:', tocData)
+            
+                sendMsg('update', tocData, iframe)
 
             }
         }

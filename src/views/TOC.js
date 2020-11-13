@@ -10,21 +10,15 @@ class TOC extends React.Component {
     
     addPage(grade, unit){
         const {pages} = this.props
-        
         let newPages = pages
-        const newPageNumber = newPages[grade][unit].length+1
-        newPages[grade][unit].push(newPageNumber)
-
-        this.props.updateData({pages:newPages})
+        newPages[grade][unit] += 1 
+        this.props.updateData({pages:pages})
     }
 
 
 
     updateSelected(grade, unit, page){
-        this.props.updateData({
-                pages:this.props.pages,
-                selected:[grade, unit, page]
-            })
+        this.props.updateData({selected:[grade,unit,page]})
     }
 
 
@@ -32,36 +26,43 @@ class TOC extends React.Component {
         const {selected, pages} = this.props
         const [sgrade, sunit, spage] = selected
         
+
+
+        // grades
         const toReturn = Object.keys(pages).map(
             grade => {
-                const label = `Grade ${grade}`
                 
+
+                // units
                 const units = Object.keys(pages[grade]).map(
-                    unit =>{
-                        const pagesToRender = pages[grade][unit].map((page, index) => {
-                            const selected = (grade == sgrade && unit == sunit && page == spage)
+                    unit => {
+
+                        // pages
+                        let pagesToRender = []
+                        for (let page = 1; page <= pages[grade][unit]; page++){
+                            const isSelected = (grade == sgrade && unit == sunit && page == spage)
                             const handleClick = () => this.updateSelected(grade, unit, page)
-                            return <Page label={index+1} selected={selected} handleClick={handleClick}/>
-                        })
+                            pagesToRender.push(
+                                <Page label={page} selected={isSelected} handleClick={handleClick} key={unit+'-'+page}/>
+                            )
+                        }
                         
+                        // add unit
                         return (
-                            <Unit label={unit}>
+                            <Unit label={unit} key={unit}>
                                 {pagesToRender}
                                 <IconButton icon='add' className='addPage' handleClick={() => this.addPage(grade, unit)}/>
                             </Unit>
                         )
-                })
-                
-                return (
-                    <Grade label={label}>
-                    {units}
-                </Grade>
-            )
-        }
+                    }
+                )
+
+            
+                // add grade
+               return <Grade label={'Grade ' + grade} key={grade}> {units} </Grade>
+            }
         )
         
-            
-
         return (
             <div className='TOC'>
                 {toReturn || ''}
